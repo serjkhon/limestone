@@ -50,3 +50,24 @@ def plot_nbody(history: np.ndarray, labels: list = None):
     ax.set_zlabel('z (m)')
     ax.legend()
     plt.show()
+
+def plot_lidov_kozai(solution):
+    """
+    Plot eccentricity and inclination evolution from a Lidov-Kozai integration.
+    """
+    t = solution.t
+    e = solution.y[0]
+    i = np.degrees(solution.y[1])
+
+    fig, (ax1, ax2) = plt.subplots(2, 1, sharex=True)
+
+    ax1.plot(t, e)
+    ax1.set_ylabel('Eccentricity')
+    ax1.set_title('Lidov-Kozai Oscillations')
+
+    ax2.plot(t, i, color='orange')
+    ax2.set_ylabel('Inclination (degrees)')
+    ax2.set_xlabel('Time (s)')
+
+    plt.tight_layout()
+    plt.show()
