@@ -25,3 +25,28 @@ def plot_orbit(elements: OrbitalElements, mu: float, n_points: int = 1000):
     ax.legend()
 
     plt.show()
+
+def plot_nbody(history: np.ndarray, labels: list = None):
+    """
+    Plot trajectories from an n-body simulation.
+    history : (n_steps, N, 3) array from leapfrog
+    labels  : list of names for each body
+    """
+    fig = plt.figure()
+    ax = fig.add_subplot(111, projection='3d')
+
+    N = history.shape[1]
+
+    for i in range(N):
+        x = history[:, i, 0]
+        y = history[:, i, 1]
+        z = history[:, i, 2]
+        label = labels[i] if labels else f"body {i}"
+        ax.plot(x, y, z, label=label)
+        ax.scatter(x[0], y[0], z[0], s=50)
+
+    ax.set_xlabel('x (m)')
+    ax.set_ylabel('y (m)')
+    ax.set_zlabel('z (m)')
+    ax.legend()
+    plt.show()
