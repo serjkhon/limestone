@@ -2,8 +2,8 @@ import numpy as np
 
 def solve_kepler(M: float, e: float, tol: float = 1e-10, max_iter: int = 100) -> float:
 
-#solving Kepler's equation M = E - e*sin(E) for eccentric anomaly E.
-#uses Newton-Raphson iteration.
+# solving Kepler's equation M = E - e*sin(E) for eccentric anomaly E.
+# uses Newton-Raphson iteration.
     E = M + e * np.sin(M)
 
     for _ in range(max_iter):
@@ -16,7 +16,7 @@ def solve_kepler(M: float, e: float, tol: float = 1e-10, max_iter: int = 100) ->
 
 def true_anomaly_from_eccentric(E: float, e: float) -> float:
 
-#converts eccentric anomaly E to true anomaly nu.
+# converts eccentric anomaly E to true anomaly nu.
 
     return 2 * np.arctan2(
         np.sqrt(1 + e) * np.sin(E / 2),
