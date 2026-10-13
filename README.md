@@ -67,7 +67,3 @@ plot_nbody(history, labels=['Sun', 'Earth', 'Jupiter'])
 - numpy
 - scipy
 - matplotlib
-
-## License
-
-MIT
